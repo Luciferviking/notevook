@@ -37,6 +37,8 @@ export function read(id_){
     //console.log(fileData[idIndex]);
     return(fileData[idIndex]);
 }
+
+export const readFull = fileData;
  
 export function update(id_, whatKey, whaContent){
     const workingObj = fileData[search(id_)];

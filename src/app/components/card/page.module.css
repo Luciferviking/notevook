@@ -1,0 +1,73 @@
+#mainCont {
+  display: grid;
+  justify-self: center;
+  /* border: 2px solid red; */
+  width: calc(100% - 3rem);
+  aspect-ratio: 1/0.8;
+  position: relative;
+  grid-template-rows: 2fr 1fr;
+  color: black;
+  margin-top: 3rem;
+}
+#topCont {
+  /* border: 2px solid yellow; */
+  background-color: var(--cardColor);
+  border-radius: 2rem 2rem 2rem 0;
+  padding: 1rem;
+}
+#topContHeading {
+  font-size: 25px;
+  margin-top: 3rem;
+  bottom: 0px;
+}
+#bottomPaCont {
+  display: grid;
+  grid-template-columns: calc(100% - 27%) 27%;
+}
+#bottomCont {
+  padding: 1rem;
+  /* border: 2px solid white; */
+  border-radius: 0px 0px 2rem 2rem;
+  background-color: rgb(182, 237, 152);
+}
+#bottomPillsCont {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: fit-content(100px) fit-content(100px);
+  grid-gap: 1rem;
+}
+#bottomPillsCont > div {
+  background-color: antiquewhite;
+  /* border: 2px solid red; */
+  padding: 1px 6px;
+  width: fit-content;
+  border-radius: 0.8rem;
+  height: 2rem;
+  align-items: center;
+  align-content: center;
+}
+#bottomLeftPaPaCont {
+  background-color: rgb(182, 237, 152);
+}
+#bottomLeftPaCont {
+  /* border: 2px solid pink; */
+  align-self: center;
+  align-content: center;
+  aspect-ratio: 1/1;
+  height: 100%;
+  border-radius: 2rem 0 0 0;
+  justify-items: center;
+  background-color: black;
+}
+#bottomLeftCont {
+  width: 87%;
+  aspect-ratio: 1/1;
+  /* border: 2px solid green; */
+  border-radius: 100%;
+  color: red;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  background-color: antiquewhite;
+  z-index: 1;
+}
