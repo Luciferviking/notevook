@@ -22,7 +22,7 @@ export async function create(title_, content_){
     //console.log(typeof(fileData));
 
     fileData.push({
-        id: fileData.length + 1,
+        id: fileData.length,
         title: title_,
         content: content_
     });
@@ -52,4 +52,18 @@ export function update(id_, whatKey, whaContent){
     //console.log(fileData[search(id_)]);
 }
 
-export function remove(){}
+// can use my method i.e. [a,b,c,d] == [a.b] [c,d] == [a,b] [d] pop c == [a , b , d] join. this way the array doesn't leave a hole upon delete as array is of stack data structure.
+export function remove(id_){
+    fileData.splice(id_, 1);
+    //console.log(fileData);
+
+    // but this leaves hole in the id this may create issue for later id as the id is created on the basis of the array length and that may clash with each other
+    // this changes the id of the objects after the removed object to -1
+   
+    for(let i = id_; i < fileData.length; i++){
+      //  console.log(i);
+        fileData[i].id = i;
+    }
+
+   fs.writeFile(filePath, JSON.stringify(fileData, null, 2), 'utf-8');
+}
