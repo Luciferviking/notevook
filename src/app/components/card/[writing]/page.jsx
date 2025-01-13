@@ -1,5 +1,12 @@
-import React from "react";
+export default async function Page({ params }) {
+  // Await params if it's a Promise
+  const resolvedParams = await params;
+  const { writing } = resolvedParams;
 
-export default function page() {
-  return <div>page</div>;
+  return (
+    <div>
+      <h1>Slug: {writing}</h1>
+      <p>This is a server-side rendered page for the slug: {writing}</p>
+    </div>
+  );
 }
