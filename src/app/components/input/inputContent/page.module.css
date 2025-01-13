@@ -1,0 +1,25 @@
+#mainCont {
+  padding: 0px;
+  /* border: 2px solid red; */
+}
+#mainCont > div > form {
+  display: grid;
+  grid-template-columns: calc(100% - 3rem) 3rem;
+}
+
+#inputCont {
+  all: unset;
+  color: white;
+  /* width: 70%; */
+  /* border: 2px solid green; */
+  font-size: var(--font-xl);
+  height: auto;
+}
+#buttonSave {
+  justify-self: right;
+  /* color: red; */
+  width: 2.25rem;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  border: 0px;
+}

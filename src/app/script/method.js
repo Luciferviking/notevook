@@ -35,6 +35,7 @@ export function read(id_){
     //search func
     const idIndex = search(id_);
     //console.log(fileData[idIndex]);
+
     return(fileData[idIndex]);
 }
 
@@ -69,3 +70,5 @@ export function remove(id_){
 
    fs.writeFile(filePath, JSON.stringify(fileData, null, 2), 'utf-8');
 }
+
+

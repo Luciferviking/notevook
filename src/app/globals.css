@@ -2,6 +2,9 @@
   --background: #ffffff;
   --foreground: #171717;
   --cardColor: rgb(182, 237, 152);
+  --font-xl: 2.5rem;
+  --font-l: 1.5rem;
+  --font-s: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
