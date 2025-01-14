@@ -1,82 +1,33 @@
-import fs from 'fs';
-import path from 'path';
-// import { refreshData } from "../../script/method";
+// pages/api/saveData.js
+import fs from "fs";
+import path from "path";
 
-export async function POST(req) {
-    try {
-        const body = await req.json();
-        const { slug , userInput , whichKey} = body;
+export default function handler(req, res) {
+  if (req.method === "POST") {
+    const filePath = path.join(process.cwd(), "data/mockData.json");
+    const { id, newParagraph } = req.body;
 
-        if (!userInput || userInput.trim() === '') {
-            return new Response(JSON.stringify({ message: 'Input cannot be empty!' }), {
-                status: 400,
-                headers: { 'Content-Type': 'application/json' },
-            });
-        }
-
-        const filePath = path.join(process.cwd(), 'data', 'mockData.json');
-        let data = [];
-
-        if (fs.existsSync(filePath)) {
-            const fileData = fs.readFileSync(filePath, 'utf8');
-            data = JSON.parse(fileData);
-        }
-
-        // Add the new data
-        // data.push({ id: Date.now(), text: userInput });
-
-        // change the data content
-        console.log("below it is");
-        console.log(slug);
-        
-
-        function changeData(whatSlug, whatUserInput , whatWhichKey){
-            // a: title b:content c: paragraph
-            const workObj = data[whatSlug];
-            switch(whatWhichKey){
-                case "a":
-                    workObj.title = whatUserInput;
-                    break;
-                case "b":
-                    workObj.content = whatUserInput;
-                    break;
-                case "c":
-                    workObj.paragraph = whatUserInput;        
-                    break;
-            }
-            // refreshData();
-        }
-
-        changeData(slug, userInput , whichKey);
-
-        // Write back to file
-        fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-
-        return new Response(JSON.stringify({ message: '' }), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' },
-        });
-    } catch (error) {
-        console.error('File operation failed:', error);
-        return new Response(JSON.stringify({ message: 'Internal server error' }), {
-            status: 500,
-            headers: { 'Content-Type': 'application/json' },
-        });
+    if (!id || !newParagraph) {
+      return res.status(400).json({ message: "Invalid data provided" });
     }
-}
 
-export async function GET() {
-    const filePath = path.join(process.cwd(), 'data', 'mockData.json');
-    let data = [];
-  
-    if (fs.existsSync(filePath)) {
-      const fileData = fs.readFileSync(filePath, 'utf8');
-      data = JSON.parse(fileData);
+    // Read the current data
+    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+
+    // Find and update the item by ID
+    const itemIndex = data.findIndex((item) => item.id === id);
+    if (itemIndex === -1) {
+      return res.status(404).json({ message: "Item not found" });
     }
-  
-    return new Response(JSON.stringify(data), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+
+    data[itemIndex].paragraph = newParagraph;
+
+    // Save the updated data
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+
+    res.status(200).json({ message: "Data saved successfully" });
+  } else {
+    res.setHeader("Allow", ["POST"]);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
   }
-  
+}
