@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styles from "./page.module.css";
 
-const InputPara = ({ getSlug, getContent }) => {
+const InputContent = ({ getSlug, getContent }) => {
   const getContentOnly = getContent.content;
   const [userInput, setUserInput] = useState(getContentOnly); // Store user input
   const [response, setResponse] = useState(""); // Store the response message
@@ -69,4 +69,4 @@ const InputPara = ({ getSlug, getContent }) => {
   );
 };
 
-export default InputPara;
+export default InputContent;

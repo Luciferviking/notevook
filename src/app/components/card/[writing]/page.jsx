@@ -15,23 +15,27 @@ export default async function Page({ params }) {
 
   // console.log(read(valueOfSlug));
 
-  const readObj = read(valueOfSlugInt);
+  // const readObj = read(valueOfSlugInt);
   // console.log(readObj);
 
-  const ListItems = () => (
-    <div key={readObj.id} id={styles.mainCont}>
-      <InputContent
-        getSlug={valueOfSlugInt}
-        getContent={read(valueOfSlugInt)}
-      />
-      <InputTitle getSlug={valueOfSlugInt} getContent={read(valueOfSlugInt)} />
-      <InputPara getSlug={valueOfSlugInt} getContent={read(valueOfSlugInt)} />
-    </div>
-  );
+  // const ListItems = () => (
+
+  // );
 
   return (
     <div>
-      <ListItems />
+      {/* <ListItems /> */}
+      <div id={styles.mainCont}>
+        <InputContent
+          getSlug={valueOfSlugInt}
+          getContent={read(valueOfSlugInt)}
+        />
+        <InputTitle
+          getSlug={valueOfSlugInt}
+          getContent={read(valueOfSlugInt)}
+        />
+        <InputPara getSlug={valueOfSlugInt} getContent={read(valueOfSlugInt)} />
+      </div>
     </div>
   );
 }

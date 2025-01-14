@@ -66,17 +66,17 @@ export async function POST(req) {
 }
 
 export async function GET() {
-
-
     const filePath = path.join(process.cwd(), 'data', 'mockData.json');
     let data = [];
-
-    if (fs.existsSync(filePath)) {
-        const fileData = fs.readFileSync(filePath, 'utf8');
-        data = JSON.parse(fileData);
-    }
-
-
   
-    return new Response(data, { status: 200 });
+    if (fs.existsSync(filePath)) {
+      const fileData = fs.readFileSync(filePath, 'utf8');
+      data = JSON.parse(fileData);
+    }
+  
+    return new Response(JSON.stringify(data), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
+  
