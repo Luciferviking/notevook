@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css";
 
@@ -27,7 +27,6 @@ const InputContent = ({ getSlug, getContent }) => {
     // Set the height to match the scroll height
     textarea.style.height = `${textarea.scrollHeight}px`;
     setUserContent(event.target.value);
-    adjustRows();
 
     // Update the user input
   };
@@ -137,7 +136,6 @@ const InputContent = ({ getSlug, getContent }) => {
             type="text"
             value={userContent}
             onChange={handleContentChange}
-            onInput={handleContentChange}
             // placeholder={getContentOnly}
           />
 
@@ -149,7 +147,6 @@ const InputContent = ({ getSlug, getContent }) => {
             type="text"
             value={userTitle}
             onChange={handleTitleChange}
-            onInput={handleTitleChange}
           />
 
           {/* paragraph */}
@@ -160,12 +157,19 @@ const InputContent = ({ getSlug, getContent }) => {
             type="text"
             value={userPara}
             onChange={handleParaChange}
-            onInput={handleParaChange}
+            // onInput={handleParaChange}
             // placeholder={getContentOnly}
           />
 
           <button id={styles.buttonSave} type="submit">
-            S
+            <Image
+              aria-hidden
+              src="/save.svg"
+              alt="File icon"
+              width={24}
+              height={24}
+              id={styles.saveImg}
+            />
           </button>
         </form>
         <p>{response}</p>

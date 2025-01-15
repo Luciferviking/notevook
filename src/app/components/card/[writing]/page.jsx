@@ -8,18 +8,6 @@ export default async function Page({ params }) {
   const { writing } = resolvedParams;
   const valueOfSlugInt = parseInt(resolvedParams.writing, 10);
 
-  // console.log(valueOfSlug);
-  // console.log(typeof valueOfSlug);
-
-  // console.log(read(valueOfSlug));
-
-  // const readObj = read(valueOfSlugInt);
-  // console.log(readObj);
-
-  // const ListItems = () => (
-
-  // );
-
   return (
     <div>
       {/* <ListItems /> */}

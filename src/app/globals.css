@@ -5,6 +5,12 @@
   --font-xl: 2.5rem;
   --font-l: 1.5rem;
   --font-s: 1rem;
+
+  --bg-1: #d4a373;
+  --bg-2: #8c8c8c;
+  --bg-3: #fefae0;
+  --bg-4: #e9edc9;
+  --bg-5: #ccd5ae;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +28,7 @@ body {
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--bg-2);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

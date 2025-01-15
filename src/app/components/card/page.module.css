@@ -11,13 +11,16 @@
 }
 #topCont {
   /* border: 2px solid yellow; */
-  background-color: var(--cardColor);
+  background-color: var(--bg-5);
   border-radius: 2rem 2rem 2rem 0;
   padding: 1rem;
+  border-top: 2px solid var(--bg-4);
+  border-left: 2px solid var(--bg-4);
+  border-right: 2px solid var(--bg-4);
 }
 #topContHeading {
   font-size: 25px;
-  margin-top: 3rem;
+  margin-top: 1rem;
   bottom: 0px;
 }
 #bottomPaCont {
@@ -28,7 +31,9 @@
   padding: 1rem;
   /* border: 2px solid white; */
   border-radius: 0px 0px 2rem 2rem;
-  background-color: rgb(182, 237, 152);
+  background-color: var(--bg-5);
+  border-bottom: 2px solid var(--bg-4);
+  border-left: 2px solid var(--bg-4);
 }
 #bottomPillsCont {
   margin-top: 1.6rem;
@@ -47,7 +52,7 @@
   align-content: center;
 }
 #bottomLeftPaPaCont {
-  background-color: rgb(182, 237, 152);
+  background-color: var(--bg-5);
 }
 #bottomLeftPaCont {
   /* border: 2px solid pink; */
@@ -57,7 +62,7 @@
   height: 100%;
   border-radius: 2rem 0 0 0;
   justify-items: center;
-  background-color: black;
+  background-color: var(--bg-2);
 }
 #bottomLeftCont {
   width: 87%;
@@ -70,4 +75,9 @@
   text-align: center;
   background-color: antiquewhite;
   z-index: 1;
+  justify-items: center;
+}
+
+#fontImg {
+  transform: rotate(-40deg);
 }

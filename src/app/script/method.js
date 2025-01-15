@@ -18,13 +18,14 @@ function search(id_){
     }
 }
 
-export async function create(title_, content_){
+export async function create(){
     //console.log(typeof(fileData));
 
     fileData.push({
         id: fileData.length,
-        title: title_,
-        content: content_
+        title: "demo name",
+        content: "this is a demo heading",
+        paragrapg: "this is a demo paragraph edit now"
     });
 
     await fs.writeFile(filePath, JSON.stringify(fileData, null, 2), 'utf-8'); // rewrites the whole file instead of appending therefore process in efficient
@@ -41,19 +42,7 @@ export function read(id_){
 
 export const readFull = fileData;
  
-export function update(id_, whatKey, whaContent){
-    const workingObj = fileData[search(id_)];
-    switch(whatKey){
-        case "title": 
-            workingObj.title = whaContent;
-            break;
-        case "content":
-            workingObj.content = whaContent;
-            break;
-    }
-    fs.writeFile(filePath, JSON.stringify(fileData, null, 2), 'utf-8');
-    //console.log(fileData[search(id_)]);
-}
+
 
 // can use my method i.e. [a,b,c,d] == [a.b] [c,d] == [a,b] [d] pop c == [a , b , d] join. this way the array doesn't leave a hole upon delete as array is of stack data structure.
 export function remove(id_){

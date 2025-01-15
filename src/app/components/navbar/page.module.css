@@ -1,0 +1,21 @@
+#navItem {
+  all: unset;
+  border: 2px solid var(--bg-4);
+  color: black;
+  background-color: var(--bg-5);
+  padding: 3px 5px;
+  border-radius: 12px;
+}
+#homeCont {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0.5rem;
+}
+#navImg {
+  color: pink;
+  transform: rotate(180deg);
+}
+#mainCont {
+  padding: 0 1.5rem;
+  margin-top: 2rem;
+}

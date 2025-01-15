@@ -1,9 +1,9 @@
 [
   {
     "id": 0,
-    "title": "title change trial and this should chang its heh",
-    "content": "Technical Drawing Fundamentals ",
-    "paragraph": "separation check"
+    "title": "By Mezeltov",
+    "content": "Technical \nDrawing Fundamentals ",
+    "paragraph": "separation check for the para box"
   },
   {
     "id": 1,
@@ -13,26 +13,8 @@
   },
   {
     "id": 2,
-    "title": "Mello",
-    "content": "lorem ipsum dolem",
-    "paragraph": "this iare michkel the paragraph for the second id this will be the latest one hope it works"
-  },
-  {
-    "id": 3,
-    "title": "Mello",
-    "content": "lorem ipsum dolem",
-    "paragraph": "this iare michkel the paragraph for the second id this will be the latest one hope it works"
-  },
-  {
-    "id": 4,
-    "title": "title of 4th element",
-    "content": "lorem ipsum dolem",
-    "paragraph": "asad"
-  },
-  {
-    "id": 5,
-    "title": "Mello",
-    "content": "lorem ipsum dolem",
-    "paragraph": "this is sent for the 5th component updated"
+    "content": "demo is going to be changed",
+    "paragraph": "demo paragraph",
+    "title": "New Object"
   }
 ]
