@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css";
 
 const InputContent = ({ getSlug, getContent }) => {
@@ -12,15 +12,41 @@ const InputContent = ({ getSlug, getContent }) => {
   const [userTitle, setUserTitle] = useState(getTitleOnly);
   const [response, setResponse] = useState(""); // Store the response message
 
+  const textareaRef = useRef(null);
+  const textareaRefTitle = useRef(null);
+  const textareaRefPara = useRef(null);
+
+  const [rows, setRows] = useState(1);
+  const [rowsTitle, setRowsTitle] = useState(1);
+  const [rowsPara, setRowsPara] = useState(1);
+
   const handleContentChange = (event) => {
+    const textarea = textareaRef.current;
+    // Reset the height to recalculate scroll height
+    textarea.style.height = "auto";
+    // Set the height to match the scroll height
+    textarea.style.height = `${textarea.scrollHeight}px`;
     setUserContent(event.target.value);
+    adjustRows();
+
     // Update the user input
   };
   const handleTitleChange = (event) => {
+    const textarea = textareaRefTitle.current;
+    // Reset the height to recalculate scroll height
+    textarea.style.height = "auto";
+    // Set the height to match the scroll height
+    textarea.style.height = `${textarea.scrollHeight}px`;
     setUserTitle(event.target.value);
+
     // Update the user input
   };
   const handleParaChange = (event) => {
+    const textarea = textareaRefPara.current;
+    // Reset the height to recalculate scroll height
+    textarea.style.height = "auto";
+    // Set the height to match the scroll height
+    textarea.style.height = `${textarea.scrollHeight}px`;
     setUserPara(event.target.value);
     // Update the user input
   };
@@ -60,6 +86,44 @@ const InputContent = ({ getSlug, getContent }) => {
       console.error(error);
     }
   };
+  // for text area dynamic rows
+  const adjustRows = () => {
+    if (textareaRef.current) {
+      const lineHeight = 46.25; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const { scrollHeight } = textareaRef.current;
+
+      // Calculate rows based on scrollHeight and line height
+      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
+      setRows(newRows);
+    }
+  };
+  const adjustRowsTitle = () => {
+    if (textareaRefTitle.current) {
+      const lineHeight = 18.5; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const { scrollHeight } = textareaRefTitle.current;
+
+      // Calculate rows based on scrollHeight and line height
+      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
+      setRowsTitle(newRows);
+    }
+  };
+  const adjustRowsPara = () => {
+    if (textareaRefPara.current) {
+      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const { scrollHeight } = textareaRefPara.current;
+
+      // Calculate rows based on scrollHeight and line height
+      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
+      setRowsPara(newRows);
+    }
+  };
+
+  // Adjust rows on initial render (e.g., after page reload)
+  useEffect(() => {
+    adjustRows();
+    adjustRowsTitle();
+    adjustRowsPara();
+  }, []);
 
   return (
     <div id={styles.mainCont}>
@@ -67,32 +131,39 @@ const InputContent = ({ getSlug, getContent }) => {
       <div>
         <form onSubmit={handleSubmitTitle}>
           <textarea
-            rows={3}
+            ref={textareaRef}
+            rows={rows}
             id={styles.inputCont}
             type="text"
             value={userContent}
             onChange={handleContentChange}
+            onInput={handleContentChange}
             // placeholder={getContentOnly}
           />
 
           {/* title */}
           <textarea
-            rows={3}
-            id={styles.inputCont}
+            rows={rowsTitle}
+            ref={textareaRefTitle}
+            id={styles.inputTitle}
             type="text"
             value={userTitle}
             onChange={handleTitleChange}
+            onInput={handleTitleChange}
           />
 
           {/* paragraph */}
           <textarea
-            rows={3}
-            id={styles.inputCont}
+            rows={rowsPara}
+            ref={textareaRefPara}
+            id={styles.inputPara}
             type="text"
             value={userPara}
             onChange={handleParaChange}
+            onInput={handleParaChange}
             // placeholder={getContentOnly}
           />
+
           <button id={styles.buttonSave} type="submit">
             S
           </button>

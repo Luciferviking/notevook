@@ -13,10 +13,44 @@
   /* width: 70%; */
   /* border: 2px solid green; */
   font-size: var(--font-xl);
-  height: auto;
+  resize: "none";
+  overflow: hidden;
+  min-height: "40px";
+  line-height: 46px;
+  border: 2px solid red;
+}
+
+#inputTitle {
+  all: unset;
+  color: white;
+  /* width: 70%; */
+  border: 2px solid green;
+  font-size: var(--font-s);
+  resize: "none";
+  overflow: hidden;
+  min-height: "40px";
+  line-height: 18.5px;
+  width: 100%;
+}
+#inputPara {
+  all: unset;
+  color: white;
+  /* width: 70%; */
+  /* border: 2px solid green; */
+  font-size: var(--font-l);
+  resize: "none";
+  overflow: hidden;
+  min-height: "40px";
+  line-height: 27.75px;
+  border: 2px solid yellow;
+
+  display: block;
+  width: 100%;
 }
 #buttonSave {
-  justify-self: right;
+  position: absolute;
+  top: 0px;
+  right: 0px;
   /* color: red; */
   width: 2.25rem;
   aspect-ratio: 1/1;
