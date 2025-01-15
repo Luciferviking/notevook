@@ -3,7 +3,19 @@ import React from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+
+function vibrate() {
+  navigator.vibrate(70);
+  // console.log("triggered");
+}
+function error_show() {
+  const error = document.getElementsByClassName("createdMess")[0];
+  error.style.display = "block";
+  setTimeout(close_error, 600);
+  function close_error() {
+    error.style.display = "none";
+  }
+}
 
 export default function CreateButton() {
   const addObject = async () => {
@@ -22,10 +34,15 @@ export default function CreateButton() {
     } catch (error) {
       console.error("Error adding object:", error);
     }
+    vibrate();
+    error_show();
   };
 
   return (
     <div id={styles.mainCont}>
+      <div id={styles.createdMess} className="createdMess">
+        Note Created
+      </div>
       <Link onClick={addObject} id={styles.mainContLink} href={"/"}>
         <p>Create</p>
         <Image

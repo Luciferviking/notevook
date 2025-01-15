@@ -4,6 +4,19 @@ import { useRouter } from "next/navigation"; // For navigation
 import styles from "./page.module.css";
 import Image from "next/image";
 
+function vibrate() {
+  navigator.vibrate(70);
+  // console.log("triggered");
+}
+function error_show() {
+  const error = document.getElementsByClassName("createdMess")[0];
+  error.style.display = "block";
+  setTimeout(close_error, 600);
+  function close_error() {
+    error.style.display = "none";
+  }
+}
+
 export default function DeleteButton({ id_ }) {
   const router = useRouter();
 
@@ -27,10 +40,15 @@ export default function DeleteButton({ id_ }) {
     } catch (error) {
       console.error("Error while deleting item:", error);
     }
+    vibrate();
+    error_show();
   };
 
   return (
     <button onClick={handleDelete} id={styles.mainCont}>
+      <div id={styles.createdMess} className="createdMess">
+        Note Deleted
+      </div>
       <p>Delete</p>
       <Image
         aria-hidden

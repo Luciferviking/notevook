@@ -12,3 +12,15 @@
   grid-template-columns: auto auto;
   grid-gap: 0.4rem;
 }
+#createdMess {
+  display: none;
+  position: absolute;
+  top: 2rem;
+  left: 0rem;
+  color: red;
+  border: 2px solid var(--bg-4);
+  width: fit-content;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background-color: var(--bg-5);
+}

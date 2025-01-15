@@ -1,9 +1,14 @@
+"useClient";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Navbar() {
+  const addObject = async () => {
+    vibrate();
+  };
+
   return (
     <div id={styles.mainCont}>
       <button id={styles.navItem}>
