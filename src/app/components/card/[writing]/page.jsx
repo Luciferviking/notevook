@@ -1,3 +1,7 @@
+import styles from "./page.module.css";
+import { read } from "../../../script/method";
+import InputContent from "../../input/inputContent/page";
+
 export default async function Page({ params }) {
   // Await params if it's a Promise
   const resolvedParams = await params;
@@ -9,19 +13,22 @@ export default async function Page({ params }) {
 
   // console.log(read(valueOfSlug));
 
-  const readObj = read(valueOfSlugInt);
+  // const readObj = read(valueOfSlugInt);
   // console.log(readObj);
 
-  const ListItems = () => (
-    <div key={readObj.id} id={styles.mainCont}>
-      <p id={styles.pTest}>Checking CSS connectivity</p>
-      <div id={styles.titleCont}>{readObj.content}</div>
-    </div>
-  );
+  // const ListItems = () => (
+
+  // );
 
   return (
     <div>
-      <ListItems />
+      {/* <ListItems /> */}
+      <div id={styles.mainCont}>
+        <InputContent
+          getSlug={valueOfSlugInt}
+          getContent={read(valueOfSlugInt)}
+        />
+      </div>
     </div>
   );
 }

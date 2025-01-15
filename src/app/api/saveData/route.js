@@ -1,33 +1,106 @@
-// pages/api/saveData.js
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
+// import { refreshData } from "../../script/method";
 
-export default function handler(req, res) {
-  if (req.method === "POST") {
-    const filePath = path.join(process.cwd(), "data/mockData.json");
-    const { id, newParagraph } = req.body;
+export async function POST(req) {
+    try {
+        const body = await req.json();
+        const { slug , userContent , userPara , userTitle } = body;
 
-    if (!id || !newParagraph) {
-      return res.status(400).json({ message: "Invalid data provided" });
+        if (!userContent || userContent.trim() === '') {
+            return new Response(JSON.stringify({ message: 'Input cannot be empty!' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        if (!userPara || userPara.trim() === '') {
+            return new Response(JSON.stringify({ message: 'Input cannot be empty!' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+        if (!userTitle || userTitle.trim() === '') {
+            return new Response(JSON.stringify({ message: 'Input cannot be empty!' }), {
+                status: 400,
+                headers: { 'Content-Type': 'application/json' },
+            });
+        }
+
+        const filePath = path.join(process.cwd(), 'data', 'mockData.json');
+        let data = [];
+
+        if (fs.existsSync(filePath)) {
+            const fileData = fs.readFileSync(filePath, 'utf8');
+            data = JSON.parse(fileData);
+        }
+
+        // Add the new data
+        // data.push({ id: Date.now(), text: userContent });
+
+        // change the data content
+        console.log("below it is");
+        console.log(slug);
+        
+
+        // function changeData(whatSlug, whatUserContent , whatWhichKey){
+        //     // a: title b:content c: paragraph
+        //     const workObj = data[whatSlug];
+        //     switch(whatWhichKey){
+        //         case "a":
+        //             workObj.title = whatUserContent;
+        //             break;
+        //         case "b":
+        //             workObj.content = whatUserContent;
+        //             break;
+        //         case "c":
+        //             workObj.paragraph = whatUserContent;        
+        //             break;
+        //     }
+        //     // refreshData();
+        // }
+
+        // changeData(slug, userContent , whichKey);
+
+        function saveData(whatSlug , whatUserContent, whatUserTitle, whatUserPara){
+            const workObj = data[whatSlug];
+            workObj.title = whatUserTitle;
+            workObj.content = whatUserContent;
+            workObj.paragraph = whatUserPara;
+        }
+
+        saveData(slug, userContent , userTitle, userPara);
+
+
+
+
+        // Write back to file
+        fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+
+        return new Response(JSON.stringify({ message: '' }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        });
+    } catch (error) {
+        console.error('File operation failed:', error);
+        return new Response(JSON.stringify({ message: 'Internal server error' }), {
+            status: 500,
+            headers: { 'Content-Type': 'application/json' },
+        });
     }
-
-    // Read the current data
-    const data = JSON.parse(fs.readFileSync(filePath, "utf-8"));
-
-    // Find and update the item by ID
-    const itemIndex = data.findIndex((item) => item.id === id);
-    if (itemIndex === -1) {
-      return res.status(404).json({ message: "Item not found" });
-    }
-
-    data[itemIndex].paragraph = newParagraph;
-
-    // Save the updated data
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
-
-    res.status(200).json({ message: "Data saved successfully" });
-  } else {
-    res.setHeader("Allow", ["POST"]);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
 }
+
+// export async function GET() {
+//     const filePath = path.join(process.cwd(), 'data', 'mockData.json');
+//     let data = [];
+  
+//     if (fs.existsSync(filePath)) {
+//       const fileData = fs.readFileSync(filePath, 'utf8');
+//       data = JSON.parse(fileData);
+//     }
+  
+//     return new Response(JSON.stringify(data), {
+//       status: 200,
+//       headers: { 'Content-Type': 'application/json' },
+//     });
+//   }
+  

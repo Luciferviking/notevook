@@ -1,9 +1,9 @@
 [
   {
     "id": 0,
-    "title": "Alice in wonderlandanada",
+    "title": "title change trial",
     "content": "Technical Drawing Fundamentals",
-    "paragraph": "this is something new\n"
+    "paragraph": "this should get reflect instantaneously"
   },
   {
     "id": 1,
