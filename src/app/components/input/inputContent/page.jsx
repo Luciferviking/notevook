@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css";
+import Remove from "../../delete/page";
 
 const InputContent = ({ getSlug, getContent }) => {
   const getContentOnly = getContent.content;
@@ -88,7 +89,7 @@ const InputContent = ({ getSlug, getContent }) => {
   // for text area dynamic rows
   const adjustRows = () => {
     if (textareaRef.current) {
-      const lineHeight = 46.25; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
       const { scrollHeight } = textareaRef.current;
 
       // Calculate rows based on scrollHeight and line height
@@ -174,6 +175,7 @@ const InputContent = ({ getSlug, getContent }) => {
         </form>
         <p>{response}</p>
       </div>
+      <Remove id_={getSlug} />
     </div>
   );
 };

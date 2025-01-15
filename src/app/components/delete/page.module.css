@@ -1,0 +1,14 @@
+#mainCont {
+  all: unset;
+  border: 1.7px solid red;
+  background-color: var(--bg-1);
+  padding: 3px 5px;
+  border-radius: 12px;
+
+  position: absolute;
+  top: 2rem;
+  right: 5rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 0.4rem;
+}

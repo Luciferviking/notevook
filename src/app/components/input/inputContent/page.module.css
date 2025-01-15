@@ -13,11 +13,11 @@
   color: var(--bg-1);
   /* width: 70%; */
   /* border: 2px solid green; */
-  font-size: var(--font-xl);
+  font-size: var(--font-l);
   resize: "none";
   overflow: hidden;
   min-height: "40px";
-  line-height: 46px;
+  line-height: 27.75px;
   /* border: 2px solid red; */
 
   background-color: var(--bg-5);
