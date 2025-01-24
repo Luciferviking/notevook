@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-// import { refreshData } from "../../script/method";
+
 
 export async function POST(req) {
     try {
@@ -26,7 +26,8 @@ export async function POST(req) {
             });
         }
 
-        const filePath = path.join(process.cwd(), 'data', 'mockData.json');
+       
+         const filePath = "public/data/mockData.json";
         let data = [];
 
         if (fs.existsSync(filePath)) {
@@ -34,32 +35,10 @@ export async function POST(req) {
             data = JSON.parse(fileData);
         }
 
-        // Add the new data
-        // data.push({ id: Date.now(), text: userContent });
-
         // change the data content
         console.log("below it is");
         console.log(slug);
         
-
-        // function changeData(whatSlug, whatUserContent , whatWhichKey){
-        //     // a: title b:content c: paragraph
-        //     const workObj = data[whatSlug];
-        //     switch(whatWhichKey){
-        //         case "a":
-        //             workObj.title = whatUserContent;
-        //             break;
-        //         case "b":
-        //             workObj.content = whatUserContent;
-        //             break;
-        //         case "c":
-        //             workObj.paragraph = whatUserContent;        
-        //             break;
-        //     }
-        //     // refreshData();
-        // }
-
-        // changeData(slug, userContent , whichKey);
 
         function saveData(whatSlug , whatUserContent, whatUserTitle, whatUserPara){
             const workObj = data[whatSlug];
@@ -88,19 +67,3 @@ export async function POST(req) {
         });
     }
 }
-
-// export async function GET() {
-//     const filePath = path.join(process.cwd(), 'data', 'mockData.json');
-//     let data = [];
-  
-//     if (fs.existsSync(filePath)) {
-//       const fileData = fs.readFileSync(filePath, 'utf8');
-//       data = JSON.parse(fileData);
-//     }
-  
-//     return new Response(JSON.stringify(data), {
-//       status: 200,
-//       headers: { 'Content-Type': 'application/json' },
-//     });
-//   }
-  

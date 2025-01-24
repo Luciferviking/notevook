@@ -6,7 +6,8 @@ import { NextResponse } from "next/server";
 export async function GET(res) {
   try {
     // Resolve the path to the mockData.json file
-    const filePath = path.join(process.cwd(), "data", "mockData.json");
+
+  const filePath =  "public/data/mockData.json";
 
     // Read and parse the JSON file
     const fileContent = await fs.promises.readFile(filePath, "utf-8");

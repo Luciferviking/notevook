@@ -9,7 +9,7 @@ export async function POST(req) {
     });
   }
 
-  const dataPath = path.join(process.cwd(), "data", "mockData.json"); // Path to your JSON file
+  const dataPath = "public/data/mockData.json" // Path to your JSON file
   try {
     const body = await req.json(); // Parse incoming JSON body
     if (!body || !body.title) {
