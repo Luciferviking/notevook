@@ -27,7 +27,7 @@ export async function POST(req) {
         }
 
        
-         const filePath = "public/data/mockData.json";
+         const filePath = path.join(process.cwd(), "data", "mockData.json"); 
         let data = [];
 
         if (fs.existsSync(filePath)) {

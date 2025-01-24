@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation"; // For navigation
+import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 
@@ -32,7 +32,7 @@ export default function DeleteButton({ id_ }) {
         const data = await response.json();
         console.log("Item deleted:", data);
 
-        // Redirect to a different page (e.g., homepage)
+        // Redirect to a home page
         router.push("/");
       } else {
         console.error("Failed to delete item");

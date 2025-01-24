@@ -4,8 +4,7 @@ import path from "path";
 
 export async function POST(req) {
 
-  const dataPath = "public/data/mockData.json" // Path to your JSON file
-
+  const dataPath = path.join(process.cwd(), "data", "mockData.json"); 
   try {
     // Read the request body and parse JSON
     const { id_ } = await req.json();

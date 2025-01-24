@@ -36,6 +36,7 @@ export default function CreateButton() {
     }
     vibrate();
     error_show();
+    window.location.reload();
   };
 
   return (

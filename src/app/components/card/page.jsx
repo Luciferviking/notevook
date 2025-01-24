@@ -1,14 +1,9 @@
 "use client";
 import React from "react";
 import styles from "./page.module.css";
-// import { readFull } from "../../script/method";
 import Link from "next/link";
 import Image from "next/image";
-//import "../../globals.css";
 import { useEffect, useState } from "react";
-
-// trying new method
-// import { useRouter } from "next/navigation";
 
 export default function Card() {
   //fetching get api
