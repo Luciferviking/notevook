@@ -36,7 +36,7 @@ export default function Card() {
     fetchData();
   }, []);
 
-  const listItems = data.reverse().map((notes) => (
+  const listItems = data.map((notes) => (
     <div key={notes.id} id={styles.mainCont}>
       <div id={styles.topCont}>
         <div id={styles.topContHeading}>{notes.content}</div>
