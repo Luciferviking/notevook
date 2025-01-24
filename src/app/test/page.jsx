@@ -1,11 +1,42 @@
-import React from "react";
-import { create, read, update, remove } from "../script/method";
+"use client";
+import { useEffect, useState } from "react";
 
-//create("harry potter", "lorem");
-//read(3);
-//update(5, "title", "harry putter");
-//remove(4);
+export default function MockDataComponent() {
+  const [data, setData] = useState([]);
 
-export default function Test() {
-  return <div>page</div>;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/getData", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        setData(data);
+        console.log("Object added:", data); // Log after setting state
+      } catch (error) {
+        console.error("Error adding object:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log("below here page output");
+  console.log(data); // Log state data
+
+  return (
+    <div>
+      <h1>Mock Data</h1>
+      <ul>
+        {data.map((item, index) => (
+          <li key={index}>{item.content}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
