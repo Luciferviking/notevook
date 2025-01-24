@@ -1,16 +1,42 @@
-// "use client";
+"use client";
 import React from "react";
 import styles from "./page.module.css";
-import { readFull } from "../../script/method";
+// import { readFull } from "../../script/method";
 import Link from "next/link";
 import Image from "next/image";
 //import "../../globals.css";
+import { useEffect, useState } from "react";
 
 // trying new method
 // import { useRouter } from "next/navigation";
 
 export default function Card() {
-  const listItems = readFull.reverse().map((notes) => (
+  //fetching get api
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/getData", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        setData(data);
+        console.log("Object added:", data); // Log after setting state
+      } catch (error) {
+        console.error("Error adding object:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const listItems = data.reverse().map((notes) => (
     <div key={notes.id} id={styles.mainCont}>
       <div id={styles.topCont}>
         <div id={styles.topContHeading}>{notes.content}</div>

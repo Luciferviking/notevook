@@ -4,14 +4,31 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./page.module.css";
 import Remove from "../../delete/page";
 
-const InputContent = ({ getSlug, getContent }) => {
-  const getContentOnly = getContent.content;
-  const getParaOnly = getContent.paragraph;
-  const getTitleOnly = getContent.title;
-  const [userContent, setUserContent] = useState(getContentOnly); // Store user input
-  const [userPara, setUserPara] = useState(getParaOnly);
-  const [userTitle, setUserTitle] = useState(getTitleOnly);
-  const [response, setResponse] = useState(""); // Store the response message
+const InputContent = ({ getSlug }) => {
+  //fetching get api
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/api/getData", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+
+        setData(data);
+        console.log("Object added:", data); // Log after setting state
+      } catch (error) {
+        console.error("Error adding object:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const textareaRef = useRef(null);
   const textareaRefTitle = useRef(null);
@@ -20,6 +37,66 @@ const InputContent = ({ getSlug, getContent }) => {
   const [rows, setRows] = useState(1);
   const [rowsTitle, setRowsTitle] = useState(1);
   const [rowsPara, setRowsPara] = useState(1);
+
+  // for text area dynamic rows
+  const adjustRows = () => {
+    if (textareaRef.current) {
+      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const { scrollHeight } = textareaRef.current;
+
+      // Calculate rows based on scrollHeight and line height
+      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
+      setRows(newRows);
+    }
+  };
+  const adjustRowsTitle = () => {
+    if (textareaRefTitle.current) {
+      const lineHeight = 18.5; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const { scrollHeight } = textareaRefTitle.current;
+
+      // Calculate rows based on scrollHeight and line height
+      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
+      setRowsTitle(newRows);
+    }
+  };
+  const adjustRowsPara = () => {
+    if (textareaRefPara.current) {
+      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const { scrollHeight } = textareaRefPara.current;
+
+      // Calculate rows based on scrollHeight and line height
+      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
+      setRowsPara(newRows);
+    }
+  };
+
+  // Log data after it has been updated
+  useEffect(() => {
+    console.log("below is new");
+    console.log(data);
+
+    const getContent = data[getSlug] || {}; // Ensure getContent is defined
+
+    console.log(getContent);
+
+    const getContentOnly = getContent.content || "";
+    const getParaOnly = getContent.paragraph || "";
+    const getTitleOnly = getContent.title || "";
+
+    setUserContent(getContentOnly);
+    setUserPara(getParaOnly);
+    setUserTitle(getTitleOnly);
+
+    // Adjust rows on initial render (e.g., after page reload)
+    adjustRows();
+    adjustRowsTitle();
+    adjustRowsPara();
+  }, [data, getSlug]);
+
+  const [userContent, setUserContent] = useState("");
+  const [userPara, setUserPara] = useState("");
+  const [userTitle, setUserTitle] = useState("");
+  const [response, setResponse] = useState(""); // Store the response message
 
   const handleContentChange = (event) => {
     const textarea = textareaRef.current;
@@ -86,44 +163,6 @@ const InputContent = ({ getSlug, getContent }) => {
       console.error(error);
     }
   };
-  // for text area dynamic rows
-  const adjustRows = () => {
-    if (textareaRef.current) {
-      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
-      const { scrollHeight } = textareaRef.current;
-
-      // Calculate rows based on scrollHeight and line height
-      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
-      setRows(newRows);
-    }
-  };
-  const adjustRowsTitle = () => {
-    if (textareaRefTitle.current) {
-      const lineHeight = 18.5; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
-      const { scrollHeight } = textareaRefTitle.current;
-
-      // Calculate rows based on scrollHeight and line height
-      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
-      setRowsTitle(newRows);
-    }
-  };
-  const adjustRowsPara = () => {
-    if (textareaRefPara.current) {
-      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
-      const { scrollHeight } = textareaRefPara.current;
-
-      // Calculate rows based on scrollHeight and line height
-      const newRows = Math.max(1, Math.ceil(scrollHeight / lineHeight));
-      setRowsPara(newRows);
-    }
-  };
-
-  // Adjust rows on initial render (e.g., after page reload)
-  useEffect(() => {
-    adjustRows();
-    adjustRowsTitle();
-    adjustRowsPara();
-  }, []);
 
   return (
     <div id={styles.mainCont}>

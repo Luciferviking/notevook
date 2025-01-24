@@ -27,7 +27,8 @@ export default function MockDataComponent() {
   }, []);
 
   console.log("below here page output");
-  console.log(data); // Log state data
+  // console.log(data); // Log state data
+  console.log(data[0]);
 
   return (
     <div>

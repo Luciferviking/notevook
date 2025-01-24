@@ -1,5 +1,4 @@
 import styles from "./page.module.css";
-import { read } from "../../../script/method";
 import InputContent from "../../input/inputContent/page";
 
 export default async function Page({ params }) {
@@ -12,10 +11,7 @@ export default async function Page({ params }) {
     <div>
       {/* <ListItems /> */}
       <div id={styles.mainCont}>
-        <InputContent
-          getSlug={valueOfSlugInt}
-          getContent={read(valueOfSlugInt)}
-        />
+        <InputContent getSlug={valueOfSlugInt} />
       </div>
     </div>
   );
