@@ -7,13 +7,13 @@
   grid-template-columns: 4rem auto;
   width: fit-content;
   padding: 3px 5px;
-  background-color: var(--bg-5);
+  /* background-color: var(--bg-1); */
   border-radius: 12px;
 }
 
 #mainContLink > p {
   /* border: 2px solid red; */
-  color: black;
+  color: var(--bg-5-font);
 }
 #createdMess {
   display: none;

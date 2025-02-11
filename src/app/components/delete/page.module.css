@@ -1,8 +1,8 @@
 #mainCont {
   all: unset;
-  border: 1.7px solid red;
+  border: 1.7px solid var(--bg-3);
   background-color: var(--bg-1);
-  padding: 3px 5px;
+  padding: 3px 7px;
   border-radius: 12px;
 
   position: absolute;
@@ -11,13 +11,15 @@
   display: grid;
   grid-template-columns: auto auto;
   grid-gap: 0.4rem;
+  align-items: center;
+  color: var(--bg-5-font);
 }
 #createdMess {
   display: none;
   position: absolute;
   top: 2rem;
   left: 0rem;
-  color: red;
+  color: 1.7px solid rgb(127, 4, 4);
   border: 2px solid var(--bg-4);
   width: fit-content;
   padding: 5px 8px;

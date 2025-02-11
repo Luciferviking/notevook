@@ -10,24 +10,24 @@
 
 #inputCont {
   all: unset;
-  color: var(--bg-1);
-  /* width: 70%; */
+  color: var(--font-color);
+  width: calc(100% - 2rem);
   /* border: 2px solid green; */
   font-size: var(--font-l);
   resize: "none";
   overflow: hidden;
   min-height: "40px";
-  line-height: 27.75px;
+  /* line-height: 20.75px; */
   /* border: 2px solid red; */
 
-  background-color: var(--bg-5);
+  /* background-color: var(--bg-5); */
   border-radius: 1rem;
-  padding: 1.5rem 1.5rem 0rem 1.5rem;
+  padding: 1rem 1rem 0rem 1rem;
 }
 
 #inputTitle {
   all: unset;
-  color: white;
+
   /* width: 70%; */
   /* border: 2px solid green; */
   font-size: var(--font-s);
@@ -36,27 +36,27 @@
   min-height: "40px";
   line-height: 18.5px;
   margin-top: 1rem;
-  color: var(--bg-3);
-  font-weight: 700;
+  color: var(--bg-5-font);
   padding: 0 0 0 1rem;
+  display: block;
 }
 #inputPara {
   all: unset;
-  color: black;
+  color: var(--font-color);
   /* width: 70%; */
   /* border: 2px solid green; */
-  font-size: var(--font-l);
+  font-size: var(--font-m);
   resize: "none";
   overflow: hidden;
-  min-height: "40px";
-  line-height: 27.75px;
-  border: 1px solid var(--bg-4);
+  min-height: "20px";
+  line-height: 22.2px;
+  /* border: 1px solid var(--bg-4); */
 
   display: block;
-  width: 80%;
-  background-color: var(--bg-5);
+  width: calc(100% - 2rem);
+  background-color: var(--bg-2);
   border-radius: 1rem;
-  padding: 0.5rem 1.5rem 0rem 1.5rem;
+  padding: 0.7rem 1rem 0rem 1rem;
 }
 #buttonSave {
   position: absolute;

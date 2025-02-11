@@ -32,34 +32,23 @@ export default function Card() {
   }, []);
 
   const listItems = data.map((notes) => (
-    <div key={notes.id} id={styles.mainCont}>
-      <div id={styles.topCont}>
-        <div id={styles.topContHeading}>{notes.content}</div>
+    <div key={notes.id} className={styles.mainCont}>
+      <div className={styles.cardInfo}>
+        <p>{notes.content}</p>
+        <p>{notes.paragraph}</p>
+        <p>{notes.title}</p>
       </div>
-      <div id={styles.bottomPaCont}>
-        <div id={styles.bottomCont}>
-          <p>{notes.title}</p>
-          <div id={styles.bottomPillsCont}>
-            <div>250 words</div>
-            <div>Number: {notes.id}</div>
-          </div>
-        </div>
-        <div id={styles.bottomLeftPaPaCont}>
-          <Link href={`/components/card/${notes.id}`}>
-            <div id={styles.bottomLeftPaCont}>
-              <div id={styles.bottomLeftCont}>
-                <Image
-                  aria-hidden
-                  src="/arrow.svg"
-                  alt="arrow icon"
-                  width={50}
-                  height={50}
-                  id={styles.fontImg}
-                />
-              </div>
-            </div>
-          </Link>
-        </div>
+      <div className={styles.cardButton}>
+        <Link href={`/components/card/${notes.id}`}>
+          <Image
+            aria-hidden
+            src="/arrow.svg"
+            alt="arrow icon"
+            width={50}
+            height={50}
+            id={styles.fontImg}
+          />
+        </Link>
       </div>
     </div>
   ));

@@ -41,7 +41,7 @@ const InputContent = ({ getSlug }) => {
   // for text area dynamic rows
   const adjustRows = () => {
     if (textareaRef.current) {
-      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height i.e fontsize(rem) * 18.5
       const { scrollHeight } = textareaRef.current;
 
       // Calculate rows based on scrollHeight and line height
@@ -51,7 +51,7 @@ const InputContent = ({ getSlug }) => {
   };
   const adjustRowsTitle = () => {
     if (textareaRefTitle.current) {
-      const lineHeight = 18.5; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const lineHeight = 18.5; // Adjust based on your textarea's CSS line height i.e fontsize(rem) * 18.5
       const { scrollHeight } = textareaRefTitle.current;
 
       // Calculate rows based on scrollHeight and line height
@@ -61,7 +61,7 @@ const InputContent = ({ getSlug }) => {
   };
   const adjustRowsPara = () => {
     if (textareaRefPara.current) {
-      const lineHeight = 27.75; // Adjust based on your textarea's CSS line height fontsize(rem) * 18.5
+      const lineHeight = 22.2; // Adjust based on your textarea's CSS line height i.e fontsize(rem) * 18.5
       const { scrollHeight } = textareaRefPara.current;
 
       // Calculate rows based on scrollHeight and line height

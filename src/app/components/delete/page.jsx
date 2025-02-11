@@ -4,10 +4,6 @@ import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 
-function vibrate() {
-  navigator.vibrate(70);
-  // console.log("triggered");
-}
 function error_show() {
   const error = document.getElementsByClassName("createdMess")[0];
   error.style.display = "block";
@@ -40,7 +36,6 @@ export default function DeleteButton({ id_ }) {
     } catch (error) {
       console.error("Error while deleting item:", error);
     }
-    vibrate();
     error_show();
   };
 

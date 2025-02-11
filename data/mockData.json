@@ -1,14 +1,20 @@
 [
   {
     "id": 0,
-    "title": "changed",
-    "content": "Fundamentals Of Engineering Physics",
-    "paragraph": "this is the new content for id 0 thiddddd"
+    "title": "By Swami",
+    "content": "Engineering Physics",
+    "paragraph": "Physics deals with the dynamics of mass"
   },
   {
     "id": 1,
-    "content": "New demo content is created",
-    "paragraph": "demo paragraph",
-    "title": "New Object"
+    "content": "Engineering Mathematics",
+    "paragraph": "Deals with the finiteness of structures",
+    "title": "RK Srivastav"
+  },
+  {
+    "id": 2,
+    "content": "Problem solving with programming",
+    "paragraph": "Solving practical problems using computational power",
+    "title": "Reddy"
   }
 ]
